@@ -65,9 +65,11 @@ border: 10px solid #f5cc8b;
 
 .bodyLayer {
     display: flex;
+    /* 
     align-items: center;
     justify-content: center;
-    /* margin: 1%; */
+    */ 
+    margin: 1%; 
     padding: 20px;
     font-size: 30px;
     line-height: 20px;
