@@ -66,9 +66,8 @@ const TestMenu = () => {
             fontSize: 20,
             paddingBottom: 10,
             width: "100%",
+            border: "1px dashed yellow",
             fontWeight: "bold",
-            borderWidth: 1,
-            borderStyle: "dashed",
           }}
         >
           <Icon name="angle right" />
