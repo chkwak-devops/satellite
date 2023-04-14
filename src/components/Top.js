@@ -36,8 +36,7 @@ const Top = () => {
       <div style={styleMenuLogoObj}>
         <img src="/images/emart_logo.png" width="60" />
         <span style={{ fontSize: "14px", paddingLeft: "10px" }}>
-          <font color="#fab601">P</font>romotions <font color="#fab601">A</font>
-          ccelerator
+          <font color="#fab601">F</font>act <font color="#fab601">B</font>ased <font color="#fab601">P</font>romotion
         </span>
       </div>
       <div

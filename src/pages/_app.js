@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import "semantic-ui-css/semantic.min.css";
-import "ag-grid-community/styles//ag-grid.css";
-import "ag-grid-community/styles//ag-theme-alpine.css";
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 import Head from "next/head";
 import Top from "/src/components/Top";
