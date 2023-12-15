@@ -10,9 +10,8 @@
   },
   "dependencies": {
     "@next/font": "13.1.4",
-    "ag-grid-community": "~31.0.1",
-    "ag-grid-enterprise": "~31.0.1",
-    "ag-grid-react": "^29.3.5",
+    "ag-grid-community": "^30.0.3",
+    "ag-grid-react": "^30.0.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "lowdb": "^6.1.1",
