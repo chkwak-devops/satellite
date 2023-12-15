@@ -34,9 +34,9 @@ const Top = () => {
   return (
     <>
       <div style={styleMenuLogoObj}>
-        <img src="/images/emart_logo.png" width="60" />
+        {/* <img src="/images/emart_logo.png" width="60" /> */}
         <span style={{ fontSize: "14px", paddingLeft: "10px" }}>
-          <font color="#fab601">F</font>act <font color="#fab601">B</font>ased <font color="#fab601">P</font>romotion
+          <font color="#fab601">S</font>atellite <font color="#fab601">AI</font>
         </span>
       </div>
       <div

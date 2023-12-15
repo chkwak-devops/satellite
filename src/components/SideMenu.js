@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-
+import { useRouter } from "next/router";
 import { List, Icon, Divider, Accordion, Menu, Form } from "semantic-ui-react";
 
 const bigCategoryStyleObj = {
@@ -30,6 +30,8 @@ const smCategoryStyleObj = {
 };
 
 const SideMenu = () => {
+
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(false);
 
   const handleAccordianClick = () => {
@@ -44,12 +46,12 @@ const SideMenu = () => {
         <List.Item>
           <List.Icon name="folder" />
           <List.Content style={bigCategoryStyleObj}>
-            챠트 컴포넌트 예시
+            chartjs
             <List.List>
               <List.Item>
                 <List.Content>
-                  <List.Header style={midCategoryStyleObj}>
-                    HeatMap
+                  <List.Header style={midCategoryStyleObj} onClick={() => router.push('/')}>
+                    chart example1
                   </List.Header>
                 </List.Content>
               </List.Item>
@@ -84,12 +86,12 @@ const SideMenu = () => {
         <List.Item>
           <List.Icon name="folder" />
           <List.Content style={bigCategoryStyleObj}>
-            grid 컴포넌트 예시
+            aggrid
             <List.List>
               <List.Item>
                 <List.Content>
-                  <List.Header style={midCategoryStyleObj}>
-                    ag-grid table
+                  <List.Header style={midCategoryStyleObj} onClick={() => router.push('/posters')}>
+                    영화포스터 리스트
                   </List.Header>
                 </List.Content>
               </List.Item>

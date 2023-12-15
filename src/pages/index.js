@@ -1,145 +1,127 @@
-import { useEffect, useState, useRef } from "react";
+import Head from 'next/head'
+import Link from "next/link";
+import Image from 'next/image'
+import { useRouter } from "next/router";
 
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import { Inter } from 'next/font/google'
+import styles from '@/styles/Home.module.css'
+import { Segment, Grid, Header, Message, Icon, Divider, Button, Form, } from "semantic-ui-react";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
-  const [time, setTime] = useState();
+export default function Index() {
 
-  const getTime = () => {
-    const date = new Date();
-    // const filterTime = date.toLocaleTimeString().split(" ")[1];
-    const filterTime = date.toLocaleTimeString();
-    setTime(filterTime);
+
+  const router = useRouter();
+
+  const login = async () => {
+    let user_id = document.getElementById("user_id").value;
+    let passwd = document.getElementById("passwd").value;
+
+    // user_id = commonUtil.removeStrSpace(user_id);
+    // passwd = commonUtil.removeStrSpace(passwd);
+
+    if (!user_id) {
+      alert("user ID를 입력해 주세요");
+
+      document.getElementById("user_id").value = "";
+      document.getElementById("user_id").focus();
+      return;
+    }
+
+    if (!passwd) {
+      alert("password를 입력해 주세요 ");
+      document.getElementById("passwd").value = "";
+      document.getElementById("passwd").focus();
+      return;
+    }
+
+    try {
+
+      console.log(user_id, passwd)
+
+      if ((user_id === "admin") && (passwd === "1111")) {
+        sessionStorage.setItem("USER_ID", user_id);
+        sessionStorage.setItem("USER_NAME", user_id);
+
+        router.push("/main");
+      } else {
+
+        alert("로그인 실패하였습니다 ")
+
+        document.getElementById("user_id").value = "";
+        document.getElementById("passwd").value = "";
+        document.getElementById("user_id").focus();
+        router.push("/login");
+      }
+    } catch (e) {
+      console.error(e);
+      document.getElementById("user_id").value = "";
+      document.getElementById("passwd").value = "";
+      document.getElementById("user_id").focus();
+
+      alert("로그인 실패하였습니다.");
+    }
   };
 
-  useEffect(() => {
-    setInterval(getTime, 1000);
-    return () => {
-      setInterval(getTime, 1000);
-    };
-  }, []);
+
+
+
+
+
+
 
   return (
     <>
-      <main
-        className={styles.main}
-        style={{
-          borderWidth: 5,
-          borderStyle: "dashed",
-        }}
-      >
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.js</code>
-          </p>
+      <div style={{
+        fontSize: "120px",
+        height: "200px",
+        fontWeight: "bold",
+        textAlign: "center",
+        marginTop: "400px",
+        // border: "5px dashed grey",
+      }}>
+        <font color="#fab601">S</font>atellite <font color="#fab601">AI</font>
+      </div>
+      <div style={{
+        fontSize: "50px",
+        // marginTop: "100px",
+        textAlign: "center",
+        // border: "5px dashed grey",
+      }}>
 
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <h2 className={inter.className} style={{ fontSize: "100px" }}>
-            {time}
-          </h2>
-
-          {/* <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            /> 
-          </div>*/}
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+        <Grid textAlign='center' style={{ height: '10vh' }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Form size='large'>
+              <Segment stacked>
+                <Form.Input
+                  id='user_id'
+                  fluid
+                  icon='user'
+                  iconPosition='left'
+                  placeholder='E-mail address' />
+                <Form.Input
+                  id='passwd'
+                  fluid
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type='password'
+                />
+                <Button color='teal' fluid size='large' onClick={login}>
+                  Login
+                </Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </div>
     </>
-  );
+  )
 }
+
+Index.getInitialProps = async (ctx) => {
+  const pathname = ctx.pathname;
+
+  return { pathname };
+};

@@ -1,25 +1,21 @@
-import "@/styles/globals.css";
+import '@/styles/globals.css'
 import "semantic-ui-css/semantic.min.css";
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 import Head from "next/head";
 import Top from "/src/components/Top";
 import Footer from "/src/components/Footer";
 import SideMenu from "/src/components/SideMenu";
 import "@/styles/layout.css";
-// import '@/styles/commonStyles.css'
-// import '/src/styles/layout.css'
 
-export default function App({ Component, pageProps }) {
-  return (
+
+function MyApp({ Component, pageProps }) {
+
+  return pageProps && (pageProps.pathname === "/" || pageProps.pathname === "/index") ? (
+    <div style={{ width: "100%", margin: "0 auto" }}>
+      <Component {...pageProps} />
+    </div>
+  ) : (
     <>
-      <Head>
-        <title>Emart Satellite App</title>
-        <meta name="description" content="Emart Satellite App" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
       <div className="parent">
         <div className="topLayer">
@@ -39,4 +35,20 @@ export default function App({ Component, pageProps }) {
       </div>
     </>
   );
+
 }
+
+
+MyApp.getInitialProps = async (context) => {
+  const { ctx, Component } = context;
+  let pageProps = {};
+
+  if (Component.getInitialProps) {
+    // Component (pages 폴더에 있는 컴포넌트)에 getInitialProps가 있다면
+    pageProps = (await Component.getInitialProps(ctx)) || {};
+
+    return { pageProps };
+  }
+};
+
+export default MyApp;
